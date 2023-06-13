@@ -1,4 +1,4 @@
-const { User } = require('../model');
+const { User, Thought } = require('../model');
 
 module.exports = {
 
@@ -28,16 +28,18 @@ module.exports = {
             .then((user) => res.json(user))
             .catch((err) => res.status(500).json(err));
     },
+    
     deleteUser(req, res) {
         User.findOneAndDelete({ _id: req.params.id })
             .then((user) =>
                 !user
                     ? res.status(404).json({ message: 'no user found' })
-                    : User.deleteMany({ _id: { $in: user.thoughts } })
+                    : Thought.deleteMany({ _id: { $in: user.thoughts } })
             )
             .then(() => res.json({ message: 'user and thoughts deleted' }))
             .catch((err) => res.status(500).json(err));
     },
+
     updateUser(req, res) {
         User.findOneAndUpdate(
             { _id: req.params.id },
