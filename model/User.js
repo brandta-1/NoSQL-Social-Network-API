@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-
+// thoughts and friends are arrays that contain the object Ids from their respective schema
 const userSchema = new Schema(
     {
         username: {
@@ -35,6 +35,7 @@ const userSchema = new Schema(
     }
 );
 
+//in this scope, "this" keyword refers to the above schema
 userSchema
     .virtual('friendCount')
     .get(function () {

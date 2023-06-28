@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
-
+//the reactions are an array of objects that adhere to the imported reaction schema
 const thoughtSchema = new Schema(
     {
         thoughtText: {

@@ -29,43 +29,6 @@ const emails = [
     'x9@gmail.com',
 ]
 
-
-const thoughtTxt = [
-    'thought test 0',
-    'thought test 1',
-    'thought test 2',
-    'thought test 3',
-    'thought test 4',
-    'thought test 5',
-    'thought test 6',
-    'thought test 7',
-    'thought test 8',
-    'thought test 9',
-]
-
-const reactTxt = [
-    'react test 0',
-    'react test 1',
-    'react test 2',
-    'react test 3',
-    'react test 4',
-    'react test 5',
-    'react test 6',
-    'react test 7',
-    'react test 8',
-    'react test 9',
-    'react test 10',
-    'react test 11',
-    'react test 12',
-    'react test 13',
-    'react test 14',
-    'react test 15',
-    'react test 16',
-    'react test 17',
-    'react test 18',
-    'react test 19',
-]
-
 connection.once('open', async () => {
     console.log('connected');
 
@@ -93,7 +56,6 @@ connection.once('open', async () => {
         let fList = currentUsers.filter((user) => !user._id.equals(theUser._id))
             .map(({ _id }) => _id);
 
-            console.log(fList);
         await User.findOneAndUpdate({ _id: theUser._id }, { friends: fList })
     }
 

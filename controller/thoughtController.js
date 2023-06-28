@@ -2,6 +2,7 @@ const { User, Thought } = require('../model');
 
 module.exports = {
 
+    //unless otherwise commented, see userController.js for functionality
     getThoughts(req, res) {
         Thought.find({}, (err, results) => {
             if (results) {
@@ -24,6 +25,8 @@ module.exports = {
             .catch((err) => res.status(500).json(err))
     },
 
+    //create will return the thought if successful, take its id, and use that to update the user array, along with the user id in the request parameters
+    //the other way to do this is with callbacks, see deleteThought
     createThought(req, res) {
         Thought.create(req.body)
             .then(({ _id }) => {
