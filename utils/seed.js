@@ -69,7 +69,7 @@ const reactTxt = [
 connection.once('open', async () => {
     console.log('connected');
 
-    //await User.deleteMany({});
+    await User.deleteMany({});
     await Thought.deleteMany({});
 
     const theUsers = [];
@@ -82,7 +82,7 @@ connection.once('open', async () => {
         });
     }
 
-    let currentUsers = await User.find();
+    let currentUsers = await User.create(theUsers);
 
     //everyone is friends with everyone else :)
 
@@ -95,8 +95,6 @@ connection.once('open', async () => {
 
             console.log(fList);
         await User.findOneAndUpdate({ _id: theUser._id }, { friends: fList })
-
-
     }
 
     console.table(theUsers);

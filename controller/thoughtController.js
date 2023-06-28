@@ -57,6 +57,9 @@ module.exports = {
             .catch((err) => res.status(500).json(err))
     },
 
+    //async await, promises, .then, etc were created as a solution to cb,
+    //cb is not affected by promises, it will always run after the findOneAndDelete method
+    //tries to delete something
     deleteThought(req, res) {
         Thought.findOneAndDelete({ _id: req.params.id }, (_, thought) => {
             if (!thought) {
